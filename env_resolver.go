@@ -9,7 +9,9 @@ import (
 //
 // For example LogLevel field would become LOG_LEVEL=error.
 type EnvResolver struct {
-	Prefix string // Prefix optionally applied to each lookup
+	// Prefix optionally applied to each lookup. Omit the
+	// trailing "_", this is applied automatically.
+	Prefix string
 }
 
 // Name implementation.
