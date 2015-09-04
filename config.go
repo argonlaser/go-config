@@ -17,7 +17,13 @@ var (
 // Config resolves options from the provided struct
 // using one or more Resolvers.
 type Config struct {
-	Options   interface{}
+	// Options struct.
+	Options interface{}
+
+	// Resolvers list; the ordering is significant,
+	// as it defines precedence. The first resolver
+	// is used for all fields unless the "from" tag
+	// of a field indictates otherwise.
 	Resolvers []Resolver
 }
 
