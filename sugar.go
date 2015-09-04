@@ -5,14 +5,17 @@ import (
 	"os"
 )
 
+// DefaultResolvers used by Resolve() and MustResolve().
+var DefaultResolvers = []Resolver{
+	&FlagResolver{Args: os.Args},
+	&EnvResolver{},
+}
+
 // Resolve `options` using the built-in flag and env resolvers.
 func Resolve(options interface{}) error {
 	c := Config{
-		Options: options,
-		Resolvers: []Resolver{
-			&FlagResolver{Args: os.Args},
-			&EnvResolver{},
-		},
+		Options:   options,
+		Resolvers: DefaultResolvers,
 	}
 
 	return c.Resolve()
