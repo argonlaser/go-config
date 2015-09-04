@@ -49,6 +49,28 @@ func TestConfig_Resolve_default_name(t *testing.T) {
 	assert.Equal(t, 5, o.MaxInFlight)
 }
 
+func TestConfig_Resolve_tag_name(t *testing.T) {
+	o := struct {
+		MaxInFlight int `name:"concurrency"`
+	}{}
+
+	c := Config{
+		Options: &o,
+		Resolvers: []Resolver{
+			&FlagResolver{
+				Args: []string{
+					"program",
+					"--concurrency=5",
+				},
+			},
+		},
+	}
+
+	err := c.Resolve()
+	assert.NoError(t, err)
+	assert.Equal(t, 5, o.MaxInFlight)
+}
+
 type Redis struct {
 	Host string
 	Port int
