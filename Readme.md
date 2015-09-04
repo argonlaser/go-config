@@ -1,5 +1,6 @@
 
 [![GoDoc](https://godoc.org/github.com/tj/go-config?status.svg)](http://godoc.org/github.com/tj/go-config)
+[![Build Status](https://travis-ci.org/tj/go-config.svg?branch=master)](https://travis-ci.org/tj/go-config)
 
 # go-config
 
