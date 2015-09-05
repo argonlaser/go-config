@@ -18,7 +18,7 @@ type ResolverOptions struct {
 
 // ExampleResolvers illustrates how you may initialize a Config
 // struct in order to provide custom resolvers for more flexibility.
-func ExampleResolvers() {
+func Example_resolvers() {
 	options := &ResolverOptions{
 		Timeout:     5 * time.Second,
 		Concurrency: 5,
