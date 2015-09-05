@@ -1,4 +1,5 @@
 /*
+Example program.
 
 View help and defaults:
   $ go run _example/main.go -h
@@ -21,7 +22,6 @@ package main
 
 import (
 	"log"
-	"os"
 	"time"
 
 	"github.com/tj/go-config"
@@ -33,38 +33,22 @@ type Options struct {
 	CacheSize   config.Bytes  `desc:"cache size in bytes"`
 	BatchSize   uint          `desc:"batch size" validate:"min=1,max=1000"`
 	LogLevel    string        `desc:"set the log severity" from:"env,flag"`
-	Redis       struct {
-		Host string `desc:"redis hostname"`
-		Port int    `desc:"redis port"`
-	}
-	NSQ struct {
+	NSQ         struct {
 		Address     string   `desc:"nsqd address"`
 		Lookup      []string `desc:"nsqlookupd addresses"`
 		MaxInFlight int      `desc:"nsqd max in flight messages"`
 	}
 }
 
-var options = &Options{
-	Timeout:     time.Second * 5,
-	Concurrency: 10,
-	CacheSize:   config.ParseBytes("500mb"),
-	BatchSize:   1000,
-	LogLevel:    "info",
-}
-
 func main() {
-	c := config.Config{
-		Options: options,
-		Resolvers: []config.Resolver{
-			&config.FlagResolver{Args: os.Args},
-			&config.EnvResolver{},
-		},
+	options := &Options{
+		Timeout:     time.Second * 5,
+		Concurrency: 10,
+		CacheSize:   config.ParseBytes("500mb"),
+		BatchSize:   1000,
+		LogLevel:    "info",
 	}
 
-	err := c.Resolve()
-	if err != nil {
-		log.Fatalf("error: %s", err)
-	}
-
+	config.MustResolve(options)
 	log.Printf("%+v", options)
 }
