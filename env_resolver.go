@@ -38,20 +38,20 @@ func (e *EnvResolver) Field(field Field) error {
 }
 
 // Resolve implementation (temporary noop).
-func (f *EnvResolver) Resolve() error {
+func (*EnvResolver) Resolve() error {
 	return nil
 }
 
 // Normalize `name` with prefix support.
-func (f *EnvResolver) envize(name string) string {
-	if f.Prefix != "" {
-		return f.normalize(f.Prefix) + "_" + f.normalize(name)
+func (e *EnvResolver) envize(name string) string {
+	if e.Prefix != "" {
+		return e.normalize(e.Prefix) + "_" + e.normalize(name)
 	}
 
-	return f.normalize(name)
+	return e.normalize(name)
 }
 
 // Normalize `name`.
-func (f *EnvResolver) normalize(name string) string {
+func (*EnvResolver) normalize(name string) string {
 	return strings.ToUpper(strings.Replace(name, "-", "_", -1))
 }

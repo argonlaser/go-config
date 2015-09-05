@@ -12,7 +12,7 @@ type Options struct {
 // ExampleResolve illustrates the simplest way to use go-config. Using
 // the MustResolve function pre-configures the flag and env resolvers for
 // the average use-case.
-func Example_resolve() {
+func ExampleResolve() {
 	options := &Options{
 		Concurrency: 5,
 		LogLevel:    "info",
