@@ -4,7 +4,7 @@
 
 # go-config
 
- Simpler Go configuration with structs.
+Simpler Go configuration with structs.
 
 ## Features
 
@@ -23,38 +23,38 @@ Source:
 package main
 
 import (
-  "log"
-  "os"
-  "time"
+	"log"
+	"os"
+	"time"
 
-  "github.com/tj/go-config"
+	"github.com/tj/go-config"
 )
 
 type Options struct {
-  Timeout     time.Duration `desc:"message timeout"`
-  Concurrency uint          `desc:"message concurrency"`
-  CacheSize   config.Bytes  `desc:"cache size in bytes"`
-  BatchSize   uint          `desc:"batch size" validate:"min=1,max=1000"`
-  LogLevel    string        `desc:"log severity level" from:"env,flag"`
+	Timeout     time.Duration `desc:"message timeout"`
+	Concurrency uint          `desc:"message concurrency"`
+	CacheSize   config.Bytes  `desc:"cache size in bytes"`
+	BatchSize   uint          `desc:"batch size" validate:"min=1,max=1000"`
+	LogLevel    string        `desc:"log severity level" from:"env,flag"`
 }
 
-var options = &Options{
-  Timeout:     time.Second * 5,
-  Concurrency: 10,
-  CacheSize:   config.ParseBytes("100mb"),
-  BatchSize:   250,
-}
-
+var
 func main() {
-  config.MustResolve(options)
-  log.Printf("%+v", options)
+	options = Options{
+		Timeout:     time.Second * 5,
+		Concurrency: 10,
+		CacheSize:   config.ParseBytes("100mb"),
+		BatchSize:   250,
+	}
+	config.MustResolve(&options)
+	log.Printf("%+v", options)
 }
 ```
 
 Command-line:
 
 ```
-$ LOG_LEVEL=error example --timeout 10s --concurrenct 100 --cache-size 1gb
+$ LOG_LEVEL=error example --timeout 10s --concurrency 100 --cache-size 1gb
 ```
 
 # License
