@@ -38,7 +38,6 @@ type Options struct {
 	LogLevel    string        `desc:"log severity level" from:"env,flag"`
 }
 
-var
 func main() {
 	options = Options{
 		Timeout:     time.Second * 5,
