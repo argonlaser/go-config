@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestBoolValue_Set(t *testing.T) {
+func TestBoolValueSet(t *testing.T) {
 	{
 		v := boolValue(false)
 		err := v.Set("1")
@@ -50,7 +50,7 @@ func TestBoolValue_Set(t *testing.T) {
 	}
 }
 
-func TestIntValue_Set(t *testing.T) {
+func TestIntValueSet(t *testing.T) {
 	{
 		v := intValue(123)
 		err := v.Set("50")
@@ -65,7 +65,7 @@ func TestIntValue_Set(t *testing.T) {
 	}
 }
 
-func TestUintValue_Set(t *testing.T) {
+func TestUintValueSet(t *testing.T) {
 	{
 		v := uintValue(123)
 		err := v.Set("50")
@@ -80,7 +80,7 @@ func TestUintValue_Set(t *testing.T) {
 	}
 }
 
-func TestFloatValue_Set(t *testing.T) {
+func TestFloatValueSet(t *testing.T) {
 	{
 		v := floatValue(123)
 		err := v.Set("50.99")
@@ -95,7 +95,7 @@ func TestFloatValue_Set(t *testing.T) {
 	}
 }
 
-func TestStringValue_Set(t *testing.T) {
+func TestStringValueSet(t *testing.T) {
 	{
 		v := stringValue("something")
 		err := v.Set("hello")
@@ -104,7 +104,7 @@ func TestStringValue_Set(t *testing.T) {
 	}
 }
 
-func TestStringsValue_Set(t *testing.T) {
+func TestStringsValueSet(t *testing.T) {
 	{
 		v := stringsValue{}
 		assert.Nil(t, v.Set("hello"))

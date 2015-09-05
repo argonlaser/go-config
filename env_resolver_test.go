@@ -48,7 +48,7 @@ func TestEnvResolver(t *testing.T) {
 	assert.Equal(t, []string{"0.0.0.0:3001", "0.0.0.0:3002"}, o.Addresses)
 }
 
-func TestEnvResolver_prefix(t *testing.T) {
+func TestEnvResolverPrefix(t *testing.T) {
 	o := struct {
 		Port    uint   `name:"port" desc:"redis port"`
 		Address string `name:"address" desc:"redis address"`

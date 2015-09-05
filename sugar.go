@@ -23,8 +23,7 @@ func Resolve(options interface{}) error {
 
 // MustResolve `options` using the built-in flag and env resolvers.
 func MustResolve(options interface{}) {
-	err := Resolve(options)
-	if err != nil {
+	if err := Resolve(options); err != nil {
 		log.Fatalf("error resolving configuration: %s", err)
 	}
 }

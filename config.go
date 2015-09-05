@@ -1,7 +1,7 @@
 package config
 
 import (
-	"fmt"
+	"errors"
 	"reflect"
 	"strings"
 
@@ -11,7 +11,7 @@ import (
 
 // Errors used during resolution.
 var (
-	ErrFieldNotFound = fmt.Errorf("field not found")
+	ErrFieldNotFound = errors.New("field not found")
 )
 
 // Config resolves options from the provided struct
@@ -30,15 +30,15 @@ type Config struct {
 // Resolve the configuration.
 func (c *Config) Resolve() error {
 	if c.Options == nil {
-		return fmt.Errorf("Config.Options required")
+		return errors.New("Config.Options required")
 	}
 
 	if len(c.Resolvers) == 0 {
-		return fmt.Errorf("Config.Resolvers required")
+		return errors.New("Config.Resolvers required")
 	}
 
 	if reflect.ValueOf(c.Options).Kind() != reflect.Ptr {
-		return fmt.Errorf("Config.Options must be a pointer")
+		return errors.New("Config.Options must be a pointer")
 	}
 
 	for _, resolver := range c.Resolvers {

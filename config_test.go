@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestConfig_Resolve_validation(t *testing.T) {
+func TestConfigResolveValidation(t *testing.T) {
 	o := struct {
 		Concurrency int `name:"concurrency" desc:"some number" validate:"min=1,max=5"`
 	}{}
@@ -27,7 +27,7 @@ func TestConfig_Resolve_validation(t *testing.T) {
 	assert.EqualError(t, err, `Concurrency: less than min`)
 }
 
-func TestConfig_Resolve_default_name(t *testing.T) {
+func TestConfigResolveDefaultName(t *testing.T) {
 	o := struct {
 		MaxInFlight int
 	}{}
@@ -49,7 +49,7 @@ func TestConfig_Resolve_default_name(t *testing.T) {
 	assert.Equal(t, 5, o.MaxInFlight)
 }
 
-func TestConfig_Resolve_tag_name(t *testing.T) {
+func TestConfigResolveTagName(t *testing.T) {
 	o := struct {
 		MaxInFlight int `name:"concurrency"`
 	}{}
@@ -76,7 +76,7 @@ type Redis struct {
 	Port int
 }
 
-func TestConfig_Resolve_nested(t *testing.T) {
+func TestConfigResolveNested(t *testing.T) {
 	o := struct {
 		NSQ struct {
 			Messages struct {
@@ -120,7 +120,7 @@ type Bar struct {
 	Baz string
 }
 
-func TestConfig_Resolve_nested_pointers(t *testing.T) {
+func TestConfigResolveNestedPointers(t *testing.T) {
 	o := struct {
 		Foo *Foo
 	}{

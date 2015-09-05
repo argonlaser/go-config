@@ -19,7 +19,7 @@ type NestedOptions struct {
 // ExampleNested illustrates how nested structs may be used. In this
 // example --nsq-address and --nsq-max-in-flight flags would be
 // available, as well as NSQ_ADDRESS and NSQ_MAX_IN_FLIGHT.
-func Example_nested() {
+func ExampleNested() {
 	options := &NestedOptions{}
 
 	c := config.Config{
