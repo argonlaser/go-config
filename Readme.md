@@ -39,12 +39,13 @@ type Options struct {
 }
 
 func main() {
-	options = Options{
+	options := Options{
 		Timeout:     time.Second * 5,
 		Concurrency: 10,
 		CacheSize:   config.ParseBytes("100mb"),
 		BatchSize:   250,
 	}
+
 	config.MustResolve(&options)
 	log.Printf("%+v", options)
 }
