@@ -54,7 +54,7 @@ func main() {
 Command-line:
 
 ```
-$ LOG_LEVEL=error example --timeout 10s --concurrenct 100 --cache-size 1gb
+$ LOG_LEVEL=error example --timeout 10s --concurrency 100 --cache-size 1gb
 ```
 
 # License
