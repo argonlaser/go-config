@@ -8,11 +8,11 @@ import (
 )
 
 type NestedOptions struct {
-	LogLevel string `desc:"set the log severity"`
+	LogLevel string `help:"set the log severity"`
 	NSQ      struct {
-		Address     string   `desc:"nsqd address"`
-		Lookup      []string `desc:"nsqlookupd addresses"`
-		MaxInFlight int      `desc:"nsqd max in flight messages"`
+		Address     string   `help:"nsqd address"`
+		Lookup      []string `help:"nsqlookupd addresses"`
+		MaxInFlight int      `help:"nsqd max in flight messages"`
 	}
 }
 

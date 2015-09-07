@@ -7,7 +7,7 @@ however you may provide your own by implementing the
 Resolver interface.
 
 Each field may have a "name" tag, which is otherwise derived
-from field, a "desc" tag used to describe the field, and a "validate"
+from field, a "help" tag used to describe the field, and a "validate"
 tag which utilizes https://gopkg.in/validator.v2 under the hood for validation.
 
 Defaults are provided by the initialized struct.

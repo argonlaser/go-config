@@ -9,11 +9,11 @@ import (
 )
 
 type ResolverOptions struct {
-	Timeout     time.Duration `desc:"message timeout"`
-	Concurrency uint          `desc:"max in-flight messages"`
-	CacheSize   config.Bytes  `desc:"cache size in bytes"`
-	BatchSize   uint          `desc:"batch size" validate:"min=1,max=1000"`
-	LogLevel    string        `desc:"set the log severity" from:"env,flag"`
+	Timeout     time.Duration `help:"message timeout"`
+	Concurrency uint          `help:"max in-flight messages"`
+	CacheSize   config.Bytes  `help:"cache size in bytes"`
+	BatchSize   uint          `help:"batch size" validate:"min=1,max=1000"`
+	LogLevel    string        `help:"set the log severity" from:"env,flag"`
 }
 
 // ExampleResolvers illustrates how you may initialize a Config

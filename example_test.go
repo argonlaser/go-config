@@ -5,8 +5,8 @@ import (
 )
 
 type Options struct {
-	Concurrency uint   `desc:"max in-flight messages"`
-	LogLevel    string `desc:"log level"`
+	Concurrency uint   `help:"max in-flight messages"`
+	LogLevel    string `help:"log level"`
 }
 
 // ExampleResolve illustrates the simplest way to use go-config. Using

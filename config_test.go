@@ -8,7 +8,7 @@ import (
 
 func TestConfigResolveValidation(t *testing.T) {
 	o := struct {
-		Concurrency int `name:"concurrency" desc:"some number" validate:"min=1,max=5"`
+		Concurrency int `name:"concurrency" help:"some number" validate:"min=1,max=5"`
 	}{}
 
 	c := Config{

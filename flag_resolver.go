@@ -29,7 +29,7 @@ func (f *FlagResolver) Setup() error {
 // Field implementation populating the flag set.
 func (f *FlagResolver) Field(field Field) error {
 	name := field.Name()
-	desc := field.Tag("desc")
+	help := field.Tag("help")
 	addr := field.Interface()
 
 	// TODO: need to fix the case where an undefined flag
@@ -42,24 +42,24 @@ func (f *FlagResolver) Field(field Field) error {
 	switch addr.(type) {
 	case *bool:
 		v := addr.(*bool)
-		f.set.BoolVar(v, name, *v, desc)
+		f.set.BoolVar(v, name, *v, help)
 	case *string:
 		v := addr.(*string)
-		f.set.StringVar(v, name, *v, desc)
+		f.set.StringVar(v, name, *v, help)
 	case *int:
 		v := addr.(*int)
-		f.set.IntVar(v, name, *v, desc)
+		f.set.IntVar(v, name, *v, help)
 	case *uint:
 		v := addr.(*uint)
-		f.set.UintVar(v, name, *v, desc)
+		f.set.UintVar(v, name, *v, help)
 	case *float64:
 		v := addr.(*float64)
-		f.set.Float64Var(v, name, *v, desc)
+		f.set.Float64Var(v, name, *v, help)
 	case *time.Duration:
 		v := addr.(*time.Duration)
-		f.set.DurationVar(v, name, *v, desc)
+		f.set.DurationVar(v, name, *v, help)
 	case Value, *[]string:
-		f.set.Var(field.Value(), name, desc)
+		f.set.Var(field.Value(), name, help)
 	}
 
 	return nil

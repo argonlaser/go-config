@@ -10,12 +10,12 @@ import (
 
 func TestEnvResolver(t *testing.T) {
 	o := struct {
-		Number      int           `name:"number" desc:"some number"`
-		Concurrency int           `name:"concurrency" desc:"message concurrency"`
-		Port        uint          `name:"port" desc:"redis port"`
-		Address     string        `name:"address" desc:"redis address"`
-		Addresses   []string      `name:"addresses" desc:"redis addresses"`
-		Size        Bytes         `name:"size" desc:"max size"`
+		Number      int           `name:"number" help:"some number"`
+		Concurrency int           `name:"concurrency" help:"message concurrency"`
+		Port        uint          `name:"port" help:"redis port"`
+		Address     string        `name:"address" help:"redis address"`
+		Addresses   []string      `name:"addresses" help:"redis addresses"`
+		Size        Bytes         `name:"size" help:"max size"`
 		Timeout     time.Duration `name:"timeout"`
 	}{
 		Number:      123,
@@ -50,8 +50,8 @@ func TestEnvResolver(t *testing.T) {
 
 func TestEnvResolverPrefix(t *testing.T) {
 	o := struct {
-		Port    uint   `name:"port" desc:"redis port"`
-		Address string `name:"address" desc:"redis address"`
+		Port    uint   `name:"port" help:"redis port"`
+		Address string `name:"address" help:"redis address"`
 	}{}
 
 	os.Setenv("REDIS_PORT", "3000")

@@ -31,11 +31,11 @@ import (
 )
 
 type Options struct {
-	Timeout     time.Duration `desc:"message timeout"`
-	Concurrency uint          `desc:"message concurrency"`
-	CacheSize   config.Bytes  `desc:"cache size in bytes"`
-	BatchSize   uint          `desc:"batch size" validate:"min=1,max=1000"`
-	LogLevel    string        `desc:"log severity level" from:"env,flag"`
+	Timeout     time.Duration `help:"message timeout"`
+	Concurrency uint          `help:"message concurrency"`
+	CacheSize   config.Bytes  `help:"cache size in bytes"`
+	BatchSize   uint          `help:"batch size" validate:"min=1,max=1000"`
+	LogLevel    string        `help:"log severity level" from:"env,flag"`
 }
 
 func main() {
